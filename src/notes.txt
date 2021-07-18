@@ -1,0 +1,29 @@
+component => UI + data + logic
+
+UI=> JSX
+(javascript xml)
+
+rules : 
+1) jsx must have only one tag at root level (Fragments <></>)
+2) use className instead of class
+3) use htmlFor instead of for
+4) always close a tag
+5) to use js expression(not statements) => {}
+6) conditional rendering (&& and ternary operator ?: )
+7) list rendering (using map also provide a key ) (keyed framwork)
+
+
+
+
+=> class based
+=> functional component
+
+
+data =>
+    external data (props)
+        user defined
+        children & keys
+        propType
+
+    internal data (state)
+        this.state inside constructor
