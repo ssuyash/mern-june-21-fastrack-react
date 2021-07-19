@@ -8,11 +8,12 @@ class Greet extends Component {
         super(props)
         console.log(this.props)
         this.state = {
-            name:"suyash"
+            name:"suyash",
+            lastName:"kumar"
         }
     }
 
-    changeNameState = ()=>{
+    changeNameState = (arg)=>{
         this.setState({name:"mohit"})
     }
     
@@ -21,7 +22,7 @@ class Greet extends Component {
             <div>
                 Good Morning {this.props.name}
                <h2> {this.state.name} </h2>
-               <button onClick={this.changeNameState}>click</button>
+               <button onClick={(e)=>console.log(e)}>click</button>
             </div>
         );
     }

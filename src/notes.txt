@@ -1,9 +1,21 @@
+React => UI Library (only responsible for making front end)
+
+Declarative
+Compnent based
+WOUA
+
 component => UI + data + logic
 
+
+=> class based
+=> functional component
+
 UI=> JSX
+(syntactical sugar)
 (javascript xml)
 
 rules : 
+0) It looks like html but not actually html.
 1) jsx must have only one tag at root level (Fragments <></>)
 2) use className instead of class
 3) use htmlFor instead of for
@@ -15,15 +27,15 @@ rules :
 
 
 
-=> class based
-=> functional component
-
-
 data =>
     external data (props)
         user defined
-        children & keys
+        children & key
         propType
 
     internal data (state)
         this.state inside constructor
+
+
+logic =>
+    event binding
