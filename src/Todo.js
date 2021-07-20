@@ -6,9 +6,7 @@ class Todo extends Component {
     
         this.state = {
              task:"",
-             tasks:[
-                 {taskName:"Learn Ansible"},                
-             ]
+             tasks:[]
         }
     }
 
@@ -17,7 +15,6 @@ class Todo extends Component {
         let newTask = {taskName:task}
         tasks.push(newTask)
         this.setState({tasks, task:""})
-
     }
     
     render() {
@@ -32,7 +29,7 @@ class Todo extends Component {
                 <button onClick={this.saveTask}>Save Task</button>
 
                 <ul>
-        {this.state.tasks.map(task=><li>{task.taskName}</li>)}
+                    {this.state.tasks.map(task=><li>{task.taskName}</li>)}
                 </ul>
                 
             </div>
