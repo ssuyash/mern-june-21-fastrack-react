@@ -4,6 +4,7 @@ import Greetontime from './Greetontime'
 import Form from './Form'
 import Todo from './Todo'
 import Balancesheet from './Balancesheet'
+import Todos from './Todos'
 // export default function App(){
 //   return (
 //     <h1>App Component</h1>
@@ -25,7 +26,7 @@ export default class App extends Component{
     
     return (
       <React.Fragment>
-        <Balancesheet/>
+        <Todos/>
         {/* <Todo/> */}
         {/* <Form/>
         <Greetontime name="Yash" time="Evening">

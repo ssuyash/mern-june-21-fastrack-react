@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { v4 as uuidv4  } from 'uuid';
+
 
 class Balancesheet extends Component {
     constructor(props) {
@@ -17,6 +19,7 @@ class Balancesheet extends Component {
             income: 0,
             expense:0
         }
+        
         this.state.transactions.forEach(txn=>{
             if(txn.type == "income"){
                 summary.income += parseInt(txn.amount)
@@ -32,8 +35,15 @@ class Balancesheet extends Component {
 
     saveTransaction = ()=>{
         let {amount, type, remark, transactions} = this.state
-        let newTxn = {amount, type, remark}
+        let newTxn = {amount, type, remark, txnId:uuidv4()}
         transactions.push(newTxn)
+        this.setState({transactions})
+    }
+
+    deleteTxn = (id)=>{
+        console.log(id)
+        let {transactions} = this.state
+        transactions = transactions.filter(txn=>txn.txnId!=id)
         this.setState({transactions})
     }
 
@@ -75,10 +85,13 @@ class Balancesheet extends Component {
                         </thead>
                         <tbody>
                             {this.state.transactions.map(txn=>{
-                                return(<tr>
+                                return(<tr key={txn.txnId}>
                                     <td>{txn.amount}</td>
                                     <td>{txn.type}</td>
                                     <td>{txn.remark}</td>
+                                    <td>
+                                        <button onClick={()=>this.deleteTxn(txn.txnId)}>Delete</button>
+                                    </td>
                                 </tr>)
                             })}
                         </tbody>
