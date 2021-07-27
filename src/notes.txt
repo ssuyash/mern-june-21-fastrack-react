@@ -29,6 +29,7 @@ rules :
 
 data =>
     external data (props)
+        (props must be read only)
         user defined
         children & key
         propType
@@ -39,3 +40,19 @@ data =>
 
 logic =>
     event binding
+
+
+
+constructor => super()
+            => set initialState
+            => for methods binding
+        
+static getDerivedStateFromProps(props, state) => return new state
+    => if we want to put data from props to state, for that this is the right place
+
+
+render =>
+    => for UI part
+    => never use side effect code
+
+componenDidMount() => side effect code (network/http/api calls, dom manipulation, dom event binding, )

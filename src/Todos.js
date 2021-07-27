@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Loader from './Loader'
 
+
 export default class Todos extends Component {
     constructor(props) {
         super(props)
@@ -22,6 +23,10 @@ export default class Todos extends Component {
             console.log(err)
             this.setState({isLoading:false})
         })
+    }
+
+    componentDidMount(){
+        this.fetchData()
     }
 
     render() {

@@ -1,56 +1,60 @@
-import React, {Component} from 'react'
-import Greet from './Greet'
-import Greetontime from './Greetontime'
-import Form from './Form'
-import Todo from './Todo'
-import Balancesheet from './Balancesheet'
-import Todos from './Todos'
-// export default function App(){
-//   return (
-//     <h1>App Component</h1>
-//   )
-// }
-
-// export default App;
+import React, { Component } from 'react'
+import Child from './Child'
 
 
-export default class App extends Component{
-  render(){
-    let name = "yash"
-    let isLogin = false
-    let users = [
-      {name:"yash"},
-      {name:"mohit"}
-    ]
-
+export default class App extends Component {
+  constructor(props) {
+    super(props)
     
+    this.state = {
+      isShown:false,
+      count:0,
+      name:"Priyanka",
+    }
+
+    console.log("APP : costructor")
+  }
+
+
+  static getDerivedStateFromProps(props, state){
+    console.log("APP : getDerivedStateFromProps")
+    let {count} = state
+    return {count:5} //state
+    //return null
+  }  
+  
+
+  componentDidMount(){
+    console.log("APP : componentDidMount")
+    //we can change in state    
+  }
+
+  shouldComponentUpdate(nextProps, nextState){
+    console.log("APP : shouldComponentUpdate")
+    return true
+  }
+
+
+  getSnapshotBeforeUpdate(prevProps, nextState){
+    console.log("APP : getSnapshotBeforeUpdate")
+    return null
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot){
+    console.log("APP : componentDidUpdate")
+
+  }
+  
+  render() {  
+
+    console.log("APP : render")
     return (
-      <React.Fragment>
-        <Todos/>
-        {/* <Todo/> */}
-        {/* <Form/>
-        <Greetontime name="Yash" time="Evening">
-
-        </Greetontime>
-        <Greetontime name="Mohit" time="Night"/>
-        <Greet name="suyash">
-         <h1>Priyanka</h1>
-        </Greet> */}
-
-        {/* <Greet name="MOHIT"/> */}
-
-
-        {/* <h1 className="">App Component</h1> */}
-        {/* {isLogin ? <h1 htmlFor="">Hello {name}</h1> : <h1>Please Login</h1>} */}
-        {/* { isLogin &&  <h1 htmlFor="">Hello {name}</h1> } */}
-        
-        {/* <input type="text" htmlFor="email" ></input>
-        
-
-        <ul>
-          {users.map(user=><h1 key={user.name} >{user.name}</h1>)}
-        </ul> */}
-      </React.Fragment>
-    )   
+      <div>  
+        Parent : {this.state.name}      
+        <button onClick={()=>this.setState({isShown:true})}>show</button>
+        {this.state.isShown && <Child name={this.state.name} />}
+        <button onClick={()=>this.setState({name:"Suyash"})}>Change Name</button>
+      </div>
+    )
   }
 }
